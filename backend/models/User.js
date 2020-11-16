@@ -18,10 +18,7 @@ const UserSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  // avatar: {
-  //   type: String,
-  //   required: true,
-  // },
+  avatar: { data: Buffer, contentType: String },
   acesso: {
     type: Number,
     required: true,

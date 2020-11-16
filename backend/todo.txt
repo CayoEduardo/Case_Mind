@@ -1,0 +1,14 @@
+TAREFAS
+Criar rotas 
+    [done] -Registro - POST
+    [done] -Login - POST 
+    [done] -Pegar todos usuarios - GET
+    [done] -Pegar usuario atual - GET
+    [done] -Editar usuário - UPDATE/PUT/DELETE
+    [done] -Deletar usuário
+    
+    @Todo - 
+        Implementar possuiAcesso
+        [done] - Implementar imagem em blob. 
+        Adicionar base64 encoding na imagem.
+    
