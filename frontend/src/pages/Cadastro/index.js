@@ -3,7 +3,6 @@ import PropTypes from 'prop-types'
 import background from '../../assets/Fundo.png'
 import Board from './Board'
 import { Grid, makeStyles } from '@material-ui/core'
-import LoggedIn from '../../components/LoggedIn'
 
 const useStyles = makeStyles({
   container: {
@@ -15,26 +14,12 @@ const useStyles = makeStyles({
     justifyContent: 'center',
   },
 })
-const DashboardUsuario = (props) => {
+const Cadastro = (props) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
-      <Grid
-        item
-        container
-        xs={12}
-        style={{ padding: '15px', display: 'flex', alignItems: 'center' }}
-      >
-        <Grid item xs={6}>
-          <h1 style={{ marginLeft: '50px' }}>Dashboard - Usuário</h1>
-        </Grid>
-        <Grid
-          item
-          xs={6}
-          style={{ display: 'flex', justifyContent: 'flex-end' }}
-        >
-          <LoggedIn />
-        </Grid>
+      <Grid item xs={12} style={{ padding: '15px' }}>
+        <h1 style={{ marginLeft: '50px' }}>Cadastro</h1>
       </Grid>
       <Grid item xs={8} style={{ padding: '0px 90px 90px 90px' }}>
         <div>
@@ -45,6 +30,6 @@ const DashboardUsuario = (props) => {
   )
 }
 
-DashboardUsuario.propTypes = {}
+Cadastro.propTypes = {}
 
-export default DashboardUsuario
+export default Cadastro

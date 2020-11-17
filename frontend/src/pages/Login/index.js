@@ -1,18 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+
+//assets
 import background from '../../assets/Fundo.png'
 import Ilustration from '../../assets/Ilustration.png'
+
+//components
 import Form from './Form'
-import {
-  Grid,
-  TextField,
-  Button,
-  FormControl,
-  Input,
-  FormHelperText,
-  InputLabel,
-} from '@material-ui/core'
-import { makeStyles } from '@material-ui/core/'
+
+//Material-Ui
+import { Grid, makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
   container: {
@@ -51,7 +48,11 @@ const Login = (props) => {
       <Grid container className={classes.container}>
         <Grid item container xs={12}>
           <Grid item xs={6} className={classes.ilustrationWrapper}>
-            <img className={classes.ilustration} src={Ilustration} alt='' />
+            <img
+              className={classes.ilustration}
+              src={Ilustration}
+              alt='Bem vindo!'
+            />
           </Grid>
           <Grid item xs={6} className={classes.loginWrapper}>
             <Form />

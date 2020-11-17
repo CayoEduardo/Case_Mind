@@ -1,21 +1,29 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import background from '../../assets/Fundo.png'
-import Board from './Board'
-import { Grid, makeStyles } from '@material-ui/core'
 import LoggedIn from '../../components/LoggedIn'
 
+import {
+  Grid,
+  makeStyles,
+  Paper,
+  FormControl,
+  TextField,
+  Button,
+} from '@material-ui/core'
+
+import Board from './Board'
+import UserList from './UserList'
 const useStyles = makeStyles({
   container: {
     background: `url(${background})`,
-    width: '100%',
-    height: 'auto',
+    width: '100vw',
+    height: '100vh',
     backgroundSize: 'cover',
-    display: 'flex',
-    justifyContent: 'center',
   },
 })
-const DashboardUsuario = (props) => {
+
+const DashboardAdmin = (props) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
@@ -36,15 +44,28 @@ const DashboardUsuario = (props) => {
           <LoggedIn />
         </Grid>
       </Grid>
-      <Grid item xs={8} style={{ padding: '0px 90px 90px 90px' }}>
-        <div>
+      <Grid
+        item
+        container
+        style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}
+        xs={12}
+      >
+        <Grid item xs={3} style={{ display: 'flex', justifyContent: 'center' }}>
+          <UserList />
+        </Grid>
+        <Grid item xs={7}>
           <Board />
-        </div>
+        </Grid>
+        <Grid item xs={1}></Grid>
       </Grid>
     </Grid>
   )
 }
 
-DashboardUsuario.propTypes = {}
+DashboardAdmin.propTypes = {}
 
-export default DashboardUsuario
+export default DashboardAdmin

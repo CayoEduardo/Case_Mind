@@ -54,13 +54,7 @@ const Form = () => {
 
         <FormControl className={classes.margin}>
           <p className={`${classes.alignLeft} ${classes.margin}`}>Senha</p>
-          <TextField
-            InputProps={{
-              className: classes.color,
-            }}
-            className={classes.textField}
-            variant='outlined'
-          />
+          <TextField className={classes.textField} variant='outlined' />
         </FormControl>
         <p className={`${classes.cadastroText} ${classes.margin}`}>
           Não tem cadastro?
