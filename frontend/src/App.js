@@ -1,13 +1,12 @@
-import background from './assets/Fundo.png'
+import Login from './pages/Login/'
+import { CssBaseline } from '@material-ui/core'
+import DashboardUsuario from './pages/DashboardUsuario'
 
-function App() {
+const App = () => {
   return (
     <div className='App'>
-      <img
-        src={background}
-        style={{ width: '1832px', height: '1024px' }}
-        alt=''
-      />
+      <CssBaseline />
+      <DashboardUsuario />
     </div>
   )
 }
