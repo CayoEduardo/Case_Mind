@@ -1,32 +1,27 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import background from '../../assets/Fundo.png'
-import Board from './Board'
-import { Grid, makeStyles } from '@material-ui/core'
+import CadastroUI from './CadastroUI'
+import { cadastra } from '../../services/api'
 
-const useStyles = makeStyles({
-  container: {
-    background: `url(${background})`,
-    width: '100%',
-    height: 'auto',
-    backgroundSize: 'cover',
-    display: 'flex',
-    justifyContent: 'center',
-  },
-})
 const Cadastro = (props) => {
-  const classes = useStyles()
+  const [formData, setFormData] = useState({
+    nome: '',
+    email: '',
+    cpf: '',
+    senha: '',
+  })
+
+  const onChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value })
+  }
+
+  const onSubmit = async (formData) => {
+    console.log(formData)
+    const res = await cadastra(formData)
+    alert(res)
+  }
   return (
-    <Grid container className={classes.container}>
-      <Grid item xs={12} style={{ padding: '15px' }}>
-        <h1 style={{ marginLeft: '50px' }}>Cadastro</h1>
-      </Grid>
-      <Grid item xs={8} style={{ padding: '0px 90px 90px 90px' }}>
-        <div>
-          <Board />
-        </div>
-      </Grid>
-    </Grid>
+    <CadastroUI onChange={onChange} onSubmit={onSubmit} formData={formData} />
   )
 }
 

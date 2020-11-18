@@ -1,13 +1,17 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import { login } from '../../../services/api'
+import { cadastra } from '../../services/api'
 
 import FormUI from './FormUI'
 
 const FormContainer = (props) => {
   const [formData, setFormData] = useState({
+    nome: '',
     email: '',
+    cpf: '',
     senha: '',
+    imgPath: '',
+    acesso: 1,
   })
 
   const onChange = (e) => {
@@ -16,8 +20,7 @@ const FormContainer = (props) => {
 
   const onSubmit = (formData) => {
     console.log(formData)
-    const isLogged = login(formData)
-    console.log(isLogged)
+    const res = cadastra(formData)
   }
   return <FormUI formData={formData} onChange={onChange} onSubmit={onSubmit} />
 }

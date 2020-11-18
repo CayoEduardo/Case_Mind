@@ -2,7 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 
 import FormContainer from './FormContainer'
-
+import Acesso from './Acesso'
+import Avatar from './Avatar'
 import {
   Paper,
   Grid,
@@ -15,11 +16,12 @@ import {
   TextField,
 } from '@material-ui/core'
 
+import { Link } from 'react-router-dom'
+
 const useStyles = makeStyles({
   card: {
     backgroundColor: '#022349',
   },
-  imagem: { width: '100%', height: '100%' },
   input: {
     backgroundColor: 'white',
     width: '100%',
@@ -43,14 +45,15 @@ const useStyles = makeStyles({
     padding: '10px',
   },
   leftSideWrapper: {
-    padding: '70px',
+    padding: '50px',
     display: 'flex',
     justifyContent: 'center',
   },
   RightSideWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    padding: '70px',
+    justifyContent: 'center',
+    padding: '50px',
   },
   formControlMargin: {
     margin: '5px 0',
@@ -58,70 +61,56 @@ const useStyles = makeStyles({
   inputLabel: {
     marginBottom: '10px',
   },
-  acesso: { color: 'white' },
+  cadastroText: {
+    textAlign: 'left',
+    textDecoration: 'underline',
+    cursor: 'pointer',
+    fontSize: '16px',
+    color: '#e7e7e7',
+  },
 })
 
-const Board = (props) => {
+const Board = ({ onChange, onSubmit, formData }) => {
   const classes = useStyles()
 
   return (
     <Paper className={classes.card} elevation={3}>
       <form>
         <Grid container>
-          <Grid
-            item
-            className={classes.leftSideWrapper}
-            xs={6}
-            style={{ marginTop: '42px' }}
-            container
-          >
+          <Grid item className={classes.leftSideWrapper} xs={6} container>
             <Grid item xs={10} container>
               <Grid item xs={12}>
-                <img
-                  className={classes.imagem}
-                  src='https://s2.glbimg.com/WpmBvZZRHmk1Y3hPwq4KHVNuXbA=/e.glbimg.com/og/ed/f/original/2018/12/18/winner_nian-wang.jpg'
-                  alt=''
-                />
+                <Avatar />
               </Grid>
               <Grid item xs={12}>
                 <Button className={classes.imagemButton} variant='contained'>
                   <b>
-                    <p>Imagem</p>
+                    <p>Selecionar avatar</p>
                   </b>
                 </Button>
               </Grid>
               <Grid item xs={12}>
-                <FormControl className={classes.acesso} component='fieldset'>
-                  <h2 className={classes.acesso}>Acesso</h2>
-                  <RadioGroup
-                    className={classes.acesso}
-                    aria-label='Acesso'
-                    name='Acesso'
-                  >
-                    <FormControlLabel
-                      value='Admin'
-                      control={<Radio className={classes.acesso} />}
-                      label='Admin'
-                    />
-                    <FormControlLabel
-                      value='Usuario'
-                      control={<Radio className={classes.acesso} />}
-                      label='Usuario'
-                    />
-                    <FormControlLabel
-                      value='Sem acesso'
-                      control={<Radio className={classes.acesso} />}
-                      label='Sem acesso'
-                    />
-                  </RadioGroup>
-                </FormControl>
+                <Acesso />
               </Grid>
             </Grid>
           </Grid>
 
           <Grid item xs={6} className={classes.RightSideWrapper}>
-            <FormContainer />
-            <p>Já possui cadastro?</p>
+            <FormContainer
+              formData={formData}
+              onChange={onChange}
+              onSubmit={onSubmit}
+            />
+            <Link className={classes.cadastroText} to='/'>
+              Já possui cadastro?
+            </Link>
+            <Button
+              onClick={() => onSubmit(formData)}
+              variant='contained'
+              className={classes.button}
+            >
+              Cadastrar
+            </Button>
           </Grid>
         </Grid>
       </form>

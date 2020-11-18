@@ -1,12 +1,13 @@
 import axios from 'axios'
 import { Redirect } from 'react-router-dom'
 
+const config = {
+  headers: {
+    'Content-Type': 'application/json',
+  },
+}
+
 export const login = async (formData) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }
   try {
     const res = await axios.post(
       'http://localhost:5000/api/login',
@@ -15,18 +16,15 @@ export const login = async (formData) => {
     )
     console.log(res.data.token)
 
-    return <Redirect to='http://localhost:3000/dashboardusuario' />
+    return res.data.token
   } catch (error) {
+    console.log(error.response)
     return error.response.data.errors[0].msg
   }
 }
 
 export const cadastra = async (formData) => {
-  const config = {
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  }
+  formData.acesso = 1
   try {
     const res = await axios.post(
       'http://localhost:5000/api/usuario',
@@ -34,8 +32,11 @@ export const cadastra = async (formData) => {
       config
     )
     console.log(res.data)
-    console.log(res)
+    console.log(res.data.token)
+    return res.data.token
   } catch (error) {
+    console.log(error)
     console.log(error.response)
+    return error.response
   }
 }
