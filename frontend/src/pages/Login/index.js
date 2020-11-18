@@ -6,7 +6,7 @@ import background from '../../assets/Fundo.png'
 import Ilustration from '../../assets/Ilustration.png'
 
 //components
-import Form from './Form'
+import FormContainer from './Form/FormContainer'
 
 //Material-Ui
 import { Grid, makeStyles } from '@material-ui/core'
@@ -55,7 +55,7 @@ const Login = (props) => {
             />
           </Grid>
           <Grid item xs={6} className={classes.loginWrapper}>
-            <Form />
+            <FormContainer />
           </Grid>
         </Grid>
       </Grid>

@@ -5,6 +5,7 @@ const fs = require('fs')
 const { check, validationResult } = require('express-validator')
 const config = require('config')
 const auth = require('../../middleware/auth')
+const jwt = require('jsonwebtoken')
 const possuiAcesso = require('../../middleware/possuiAcesso')
 
 const User = require('../../models/User')
@@ -71,8 +72,8 @@ router.post(
 
       const salt = await bcrypt.genSalt(10)
       user.senha = await bcrypt.hash(senha, salt)
-      user.avatar.data = fs.readFileSync(imgPath)
-      user.avatar.contentType = 'image/png'
+      // user.avatar.data = fs.readFileSync(imgPath)
+      // user.avatar.contentType = 'image/png'
 
       await user.save()
 
@@ -85,7 +86,7 @@ router.post(
 
       jwt.sign(
         payload,
-        config.get('jwtSecret'),
+        config.get('jwtToken'),
         { expiresIn: 360000 },
         (error, token) => {
           if (error) throw error

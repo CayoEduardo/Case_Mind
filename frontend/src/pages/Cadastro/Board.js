@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import FormContainer from './FormContainer'
+
 import {
   Paper,
   Grid,
@@ -118,26 +120,8 @@ const Board = (props) => {
           </Grid>
 
           <Grid item xs={6} className={classes.RightSideWrapper}>
-            <FormControl className={classes.formControlMargin}>
-              <p className={classes.inputLabel}>Nome</p>
-              <TextField className={classes.input} variant='outlined' />
-            </FormControl>
-            <FormControl className={classes.formControlMargin}>
-              <p className={classes.inputLabel}>Email</p>
-              <TextField className={classes.input} variant='outlined' />
-            </FormControl>
-            <FormControl className={classes.formControlMargin}>
-              <p className={classes.inputLabel}>Cpf</p>
-              <TextField className={classes.input} variant='outlined' />
-            </FormControl>
-            <FormControl className={classes.formControlMargin}>
-              <p className={classes.inputLabel}>Senha</p>
-              <TextField className={classes.input} variant='outlined' />
-            </FormControl>
+            <FormContainer />
             <p>Já possui cadastro?</p>
-            <Button className={classes.button} variant='contained'>
-              <b>Cadastrar</b>
-            </Button>
           </Grid>
         </Grid>
       </form>

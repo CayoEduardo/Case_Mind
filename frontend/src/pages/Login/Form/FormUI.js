@@ -37,7 +37,7 @@ const useStyles = makeStyles({
   },
 })
 
-const Form = () => {
+const FormUI = ({ formData, onChange, onSubmit }) => {
   const classes = useStyles()
 
   return (
@@ -49,22 +49,38 @@ const Form = () => {
           <p className={`${classes.alignLeft} ${classes.margin}`}>
             Email ou CPF
           </p>
-          <TextField className={classes.textField} variant='outlined' />
+          <TextField
+            onChange={(e) => onChange(e)}
+            value={formData.email}
+            name='email'
+            className={classes.textField}
+            variant='outlined'
+          />
         </FormControl>
 
         <FormControl className={classes.margin}>
           <p className={`${classes.alignLeft} ${classes.margin}`}>Senha</p>
-          <TextField className={classes.textField} variant='outlined' />
+          <TextField
+            name='senha'
+            value={formData.senha}
+            onChange={(e) => onChange(e)}
+            className={classes.textField}
+            variant='outlined'
+          />
         </FormControl>
         <p className={`${classes.cadastroText} ${classes.margin}`}>
           Não tem cadastro?
         </p>
       </div>
-      <Button className={classes.button} variant='outlined'>
+      <Button
+        onClick={() => onSubmit(formData)}
+        className={classes.button}
+        variant='outlined'
+      >
         <b>Login</b>
       </Button>
     </div>
   )
 }
 
-export default Form
+export default FormUI
