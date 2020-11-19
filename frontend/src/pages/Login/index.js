@@ -21,13 +21,15 @@ const Login = ({ history, carregaUsuario }) => {
       if (isLogged.status === 200) {
         const token = isLogged.data.token
         const id = isLogged.data.id
+        const acesso = isLogged.data.acesso
         localStorage.setItem('token', token)
         axios.defaults.headers.common['x-auth-token'] = token
         try {
           const res = await getUsuario(id)
           console.log(res)
           carregaUsuario(res.data)
-          history.push('/dashboardusuario')
+          if (acesso === 1) history.push('/dashboardusuario')
+          else if (acesso === 999) history.push('/dashboardadmin')
         } catch (error) {
           console.log(error)
         }

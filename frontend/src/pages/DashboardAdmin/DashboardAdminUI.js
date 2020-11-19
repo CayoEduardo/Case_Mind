@@ -29,7 +29,7 @@ const useStyles = makeStyles({
   },
 })
 
-const DashboardAdminUI = (props) => {
+const DashboardAdminUI = ({ onChange, onSubmit, formData }) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
@@ -38,7 +38,7 @@ const DashboardAdminUI = (props) => {
           <UserList />
         </Grid>
         <Grid item xs={8} className={classes.centered}>
-          <Board />
+          <Board onChange={onChange} onSubmit={onSubmit} formData={formData} />
         </Grid>
       </Grid>
     </Grid>

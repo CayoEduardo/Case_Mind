@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
-import FormContainer from '../../components/Form/FormContainer'
+import FormContainer from './FormContainer'
 import {
   Paper,
   Grid,
@@ -59,7 +59,7 @@ const useStyles = makeStyles({
   acesso: { color: 'white' },
 })
 
-const Board = (props) => {
+const Board = ({ onChange, onSubmit, formData }) => {
   const classes = useStyles()
 
   return (
@@ -118,7 +118,11 @@ const Board = (props) => {
           </Grid>
 
           <Grid item xs={6} className={classes.RightSideWrapper}>
-            <FormContainer />
+            <FormContainer
+              onChange={onChange}
+              onSubmit={onSubmit}
+              formData={formData}
+            />
           </Grid>
         </Grid>
       </form>
