@@ -1,20 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import FormContainer from './FormContainer'
 import Acesso from './Acesso'
 import Avatar from './Avatar'
-import {
-  Paper,
-  Grid,
-  makeStyles,
-  Button,
-  FormControl,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  TextField,
-} from '@material-ui/core'
+import { Paper, Grid, makeStyles, Button } from '@material-ui/core'
 
 import { Link } from 'react-router-dom'
 
@@ -70,8 +60,21 @@ const useStyles = makeStyles({
   },
 })
 
-const Board = ({ onChange, onSubmit, formData }) => {
+const Board = ({ onChange, onSubmit, formData, setFormData }) => {
   const classes = useStyles()
+  const [image, setImage] = useState(
+    'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg'
+  )
+
+  const imageHandler = (event) => {
+    let file = event.target.files[0]
+    URL.createObjectURL(file)
+    setImage(URL.createObjectURL(file))
+  }
+
+  useEffect(() => {
+    console.log(image)
+  }, [image])
 
   return (
     <Paper className={classes.card} elevation={3}>
@@ -80,14 +83,22 @@ const Board = ({ onChange, onSubmit, formData }) => {
           <Grid item className={classes.leftSideWrapper} xs={6} container>
             <Grid item xs={10} container>
               <Grid item xs={12}>
-                <Avatar />
+                <Avatar image={image} />
               </Grid>
               <Grid item xs={12}>
-                <Button className={classes.imagemButton} variant='contained'>
+                {/* <Button className={classes.imagemButton} variant='contained'>
                   <b>
                     <p>Selecionar avatar</p>
                   </b>
-                </Button>
+                </Button> */}
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => {
+                    imageHandler(e)
+                    setFormData({ ...formData, imgPath: image })
+                  }}
+                />
               </Grid>
               <Grid item xs={12}>
                 <Acesso onChange={onChange} formData={formData} />

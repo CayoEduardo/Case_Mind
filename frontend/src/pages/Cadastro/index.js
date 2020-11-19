@@ -12,7 +12,8 @@ const Cadastro = ({ history, carregaUsuario }) => {
     email: '',
     cpf: '',
     senha: '',
-    acesso: -1,
+    acesso: 1,
+    imgPath: '',
   })
 
   const onChange = (e) => {
@@ -45,7 +46,12 @@ const Cadastro = ({ history, carregaUsuario }) => {
     }
   }
   return (
-    <CadastroUI onChange={onChange} onSubmit={onSubmit} formData={formData} />
+    <CadastroUI
+      setFormData={setFormData}
+      onChange={onChange}
+      onSubmit={onSubmit}
+      formData={formData}
+    />
   )
 }
 const mapDispatchToProps = (dispatch) => {

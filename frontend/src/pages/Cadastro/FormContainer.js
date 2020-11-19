@@ -7,6 +7,7 @@ const FormContainer = ({ onChange, onSubmit, formData }) => {
   const showFormFields = (formData) => {
     let campos = Object.getOwnPropertyNames(formData)
     campos.splice(campos.indexOf('acesso'), 1)
+    campos.splice(campos.indexOf('imgPath'), 1)
 
     return campos.map((campo) => (
       <FormField

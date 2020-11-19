@@ -17,10 +17,14 @@ const UserSchema = new mongoose.Schema({
   cpf: {
     type: String,
     required: true,
+    // unique: true,
   },
-  avatar: { data: Buffer, contentType: String },
   acesso: {
     type: Number,
+    required: true,
+  },
+  imgPath: {
+    type: String,
     required: true,
   },
 })

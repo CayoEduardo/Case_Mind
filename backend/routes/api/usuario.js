@@ -67,6 +67,7 @@ router.post(
         cpf: req.body.cpf,
         senha: req.body.senha,
         acesso: req.body.acesso,
+        imgPath: req.body.imgPath,
       })
 
       const salt = await bcrypt.genSalt(10)

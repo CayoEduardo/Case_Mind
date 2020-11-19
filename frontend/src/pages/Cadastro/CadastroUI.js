@@ -19,7 +19,7 @@ const useStyles = makeStyles({
     alignItems: 'center',
   },
 })
-const CadastroUI = ({ onChange, onSubmit, formData }) => {
+const CadastroUI = ({ onChange, onSubmit, formData, setFormData }) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
@@ -27,7 +27,12 @@ const CadastroUI = ({ onChange, onSubmit, formData }) => {
         <h1 className={classes.tittle}>Cadastro</h1>
       </Grid> */}
       <Grid item xs={8} className={classes.centered}>
-        <Board onChange={onChange} onSubmit={onSubmit} formData={formData} />
+        <Board
+          setFormData={setFormData}
+          onChange={onChange}
+          onSubmit={onSubmit}
+          formData={formData}
+        />
       </Grid>
     </Grid>
   )
