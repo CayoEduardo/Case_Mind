@@ -4,7 +4,7 @@ import DashboardUsuarioUI from './DashboardUsuarioUI'
 import { atualizaUsuario } from '../../services/api'
 import { connect } from 'react-redux'
 
-const DashboardUsuario = ({ usuario }) => {
+const DashboardUsuario = ({  usuario }) => {
   // useEffect(() => {
   //   console.log(usuario)
   // }, [usuario])
