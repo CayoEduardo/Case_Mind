@@ -17,7 +17,7 @@ router.get('/', auth, async (req, res) => {
     })
   }
 
-  let users = await User.find().select('-senha').select('-_id').select('-__v')
+  let users = await User.find().select('-_id').select('-__v')
 
   if (!users) {
     return res.status(200).send('Sem usuários cadastrados')

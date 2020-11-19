@@ -42,7 +42,8 @@ const useStyles = makeStyles({
   RightSideWrapper: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'center',
+    // justifyContent: 'center',
+    height: '700px',
     padding: '50px',
   },
   formControlMargin: {

@@ -21,7 +21,10 @@ const FormField = ({ fieldTitle, fieldName, fieldValue, onChange }) => {
     <FormControl className={classes.wrapper}>
       <p className={`${classes.alignLeft} ${classes.margin}`}>{fieldTitle}</p>
       <TextField
-        onChange={(e) => onChange(e)}
+        onChange={(e) => {
+          console.log(e)
+          onChange(e)
+        }}
         value={fieldValue}
         name={fieldName}
         className={classes.textField}

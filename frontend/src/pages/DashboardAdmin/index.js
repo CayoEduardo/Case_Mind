@@ -14,23 +14,15 @@ const DashboardAdmin = ({
   cardUsuario,
 }) => {
   const [loading, setloading] = useState(true)
-  const [formData, setFormData] = useState({
-    nome: cardUsuario.nome,
-    email: cardUsuario.email,
-    cpf: cardUsuario.cpf,
-    senha: cardUsuario.senha,
-    imgPath:
-      'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg',
-    acesso: cardUsuario.acesso,
-  })
+  const [open, setOpen] = useState(false)
+  const [formData, setFormData] = useState(null)
   useEffect(() => {
-    console.log(cardUsuario)
     const getU = async () => {
       try {
         const res = await getUsuarios(usuario.acesso)
         carregaUsuarios(res.data)
         mudaUsuario(usuario)
-
+        setFormData(usuario)
         setloading(false)
       } catch (error) {
         console.log(error)
@@ -44,8 +36,12 @@ const DashboardAdmin = ({
   }
 
   const onSubmit = async (formData) => {
-    const res = await atualizaUsuario(formData)
-    alert(JSON.stringify(res.data))
+    try {
+      const res = await atualizaUsuario(formData)
+      setOpen(true)
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return (
@@ -62,6 +58,8 @@ const DashboardAdmin = ({
         </div>
       ) : (
         <DashboardAdminUI
+          open={open}
+          setOpen={setOpen}
           onChange={onChange}
           onSubmit={onSubmit}
           setFormData={setFormData}

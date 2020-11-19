@@ -1,17 +1,7 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import FormContainer from './FormContainer'
-import {
-  Paper,
-  Grid,
-  makeStyles,
-  Button,
-  FormControl,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  TextField,
-} from '@material-ui/core'
+import { Paper, Grid, makeStyles, Button } from '@material-ui/core'
 import UserImg from './UserImg'
 import Acesso from './Acesso'
 

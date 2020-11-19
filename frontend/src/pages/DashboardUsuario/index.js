@@ -22,7 +22,6 @@ const DashboardUsuario = ({ usuario }) => {
   const onSubmit = async (formData) => {
     console.log(formData)
     const res = await atualizaUsuario(formData)
-    alert(res)
   }
   return (
     <>

@@ -14,13 +14,13 @@ const useStyles = makeStyles({
   },
 })
 
-const UserList = ({ usuarios }) => {
+const UserList = ({ usuarios, setFormData }) => {
   const classes = useStyles()
   return (
     <Paper className={classes.wrapper}>
       {usuarios.map((user) => (
         <>
-          <UserCard user={user} />
+          <UserCard setFormData={setFormData} user={user} />
         </>
       ))}
     </Paper>

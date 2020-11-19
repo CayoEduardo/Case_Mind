@@ -37,7 +37,14 @@ const useStyles = makeStyles({
   },
 })
 
-const LoginUI = ({ formData, onChange, onSubmit, open, setOpen }) => {
+const LoginUI = ({
+  formData,
+  onChange,
+  onSubmit,
+  open,
+  setOpen,
+  errorMessage,
+}) => {
   const classes = useStyles()
   return (
     <>
@@ -65,8 +72,7 @@ const LoginUI = ({ formData, onChange, onSubmit, open, setOpen }) => {
         <DialogTitle id='alert-dialog-title'>{'Acesso negado!'}</DialogTitle>
         <DialogContent>
           <DialogContentText id='alert-dialog-description'>
-            Você teve o acesso bloqueado por um administrador. Por favor, envie
-            um email para <a href='#'>suport@email.com</a>
+            {errorMessage}
           </DialogContentText>
         </DialogContent>
       </Dialog>

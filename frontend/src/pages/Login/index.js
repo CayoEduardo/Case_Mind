@@ -11,6 +11,7 @@ const Login = ({ history, carregaUsuario }) => {
     senha: '',
   })
   const [open, setOpen] = useState(false)
+  const [errorMessage, setErrorMessage] = useState('')
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -32,19 +33,25 @@ const Login = ({ history, carregaUsuario }) => {
           if (acesso === 1) history.push('/dashboardusuario')
           else if (acesso === 0) {
             setOpen(true)
+            setErrorMessage(
+              'Seu acesso foi retirado por um administrador. Por favor contactar nosso suporte.'
+            )
           } else if (acesso === 999) history.push('/dashboardadmin')
         } catch (error) {
-          console.log(error)
+          setOpen(true)
+          setErrorMessage('Credenciais Inválidas!')
         }
       }
     } catch (error) {
-      console.log(error)
+      setOpen(true)
+      setErrorMessage('Credenciais Inválidas!')
     }
   }
 
   return (
     <LoginUI
       open={open}
+      errorMessage={errorMessage}
       setOpen={setOpen}
       formData={formData}
       onChange={onChange}
@@ -58,7 +65,5 @@ const mapDispatchToProps = (dispatch) => {
     carregaUsuario: (usuario) => dispatch(carregaUsuario(usuario)),
   }
 }
-
-Login.propTypes = {}
 
 export default connect(null, mapDispatchToProps)(Login)

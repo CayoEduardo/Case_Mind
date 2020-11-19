@@ -24,7 +24,7 @@ const useStyles = makeStyles({
   text: { color: 'rgba(0,0,0,0.7)', fontSize: '16px' },
 })
 
-const UserCard = ({ user, mudaUsuario, cardUsuario }) => {
+const UserCard = ({ user, mudaUsuario, cardUsuario, setFormData }) => {
   const classes = useStyles()
   const { nome, email, acesso } = user
   return (
@@ -32,8 +32,7 @@ const UserCard = ({ user, mudaUsuario, cardUsuario }) => {
       <Paper
         onClick={() => {
           mudaUsuario(user)
-          console.log(cardUsuario)
-          console.log('oi')
+          setFormData(user)
         }}
         className={classes.wrapper}
         elevation={1}
