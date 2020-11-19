@@ -1,2 +1,3 @@
 export const CARREGA_USUARIO = 'CARREGA_USUARIO'
 export const CARREGA_USUARIOS = 'CARREGA_USUARIOS'
+export const RESET = 'RESET'

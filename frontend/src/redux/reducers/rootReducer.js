@@ -1,4 +1,4 @@
-import { CARREGA_USUARIO, CARREGA_USUARIOS } from '../types/types'
+import { CARREGA_USUARIO, CARREGA_USUARIOS, RESET } from '../types/types'
 
 const initialState = {
   token: localStorage.getItem('token'),
@@ -20,6 +20,9 @@ export default function (state = initialState, action) {
         ...state,
         usuarios: [...payload],
       }
+    case RESET:
+      localStorage.removeItem('token')
+      return initialState
     default:
       return state
   }
