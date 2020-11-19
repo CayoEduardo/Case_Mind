@@ -1,4 +1,9 @@
-import { CARREGA_USUARIO, CARREGA_USUARIOS, RESET } from '../types/types'
+import {
+  CARREGA_USUARIO,
+  CARREGA_USUARIOS,
+  RESET,
+  MUDA_USUARIO,
+} from '../types/types'
 
 export const carregaUsuario = (user) => {
   return {
@@ -17,5 +22,12 @@ export const carregaUsuarios = (users) => {
 export const reset = (users) => {
   return {
     type: RESET,
+  }
+}
+
+export const mudaUsuario = (user) => {
+  return {
+    type: MUDA_USUARIO,
+    payload: user,
   }
 }

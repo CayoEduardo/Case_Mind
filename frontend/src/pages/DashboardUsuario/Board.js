@@ -4,17 +4,7 @@ import PropTypes from 'prop-types'
 import FormContainer from './FormContainer'
 import Acesso from './Acesso'
 import Avatar from './Avatar'
-import {
-  Paper,
-  Grid,
-  makeStyles,
-  Button,
-  FormControl,
-  RadioGroup,
-  FormControlLabel,
-  Radio,
-  TextField,
-} from '@material-ui/core'
+import { Paper, Grid, makeStyles, Button } from '@material-ui/core'
 
 const useStyles = makeStyles({
   card: {
@@ -30,7 +20,7 @@ const useStyles = makeStyles({
     borderRadius: 0,
     backgroundColor: '#008891',
     color: '#e7e7e7',
-    width: '100%',
+    width: '300px',
     marginTop: '20px',
     height: '40px',
   },
@@ -41,6 +31,7 @@ const useStyles = makeStyles({
     marginTop: '100px',
     width: '100%',
     padding: '10px',
+    margin: '0 10px',
   },
   leftSideWrapper: {
     padding: '50px',
@@ -59,6 +50,11 @@ const useStyles = makeStyles({
   inputLabel: {
     marginBottom: '10px',
   },
+  centered: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
 })
 
 const Board = ({ onChange, onSubmit, formData }) => {
@@ -68,18 +64,14 @@ const Board = ({ onChange, onSubmit, formData }) => {
     <Paper className={classes.card} elevation={3}>
       <form>
         <Grid container>
-          <Grid item className={classes.leftSideWrapper} xs={6} container>
-            <Grid item xs={10} container>
-              <Grid item xs={12}>
-                <Avatar />
-              </Grid>
-              <Grid item xs={12}>
-                <Button className={classes.imagemButton} variant='contained'>
-                  <b>
-                    <p>Selecionar avatar</p>
-                  </b>
-                </Button>
-              </Grid>
+          <Grid item container className={classes.leftSideWrapper} xs={6}>
+            <Grid item xs={12} className={classes.centered}>
+              <Avatar />
+              <Button className={classes.imagemButton} variant='contained'>
+                <b>
+                  <p>Selecionar avatar</p>
+                </b>
+              </Button>
             </Grid>
           </Grid>
 
@@ -89,13 +81,18 @@ const Board = ({ onChange, onSubmit, formData }) => {
               onChange={onChange}
               onSubmit={onSubmit}
             />
-            <Button
-              onClick={() => onSubmit(formData)}
-              variant='contained'
-              className={classes.button}
-            >
-              <b>Atualizar</b>
-            </Button>
+            <div style={{ display: 'flex' }}>
+              <Button variant='contained' className={classes.button}>
+                <b>Editar</b>
+              </Button>
+              <Button
+                onClick={() => onSubmit(formData)}
+                variant='contained'
+                className={classes.button}
+              >
+                <b>Atualizar</b>
+              </Button>
+            </div>
           </Grid>
         </Grid>
       </form>

@@ -39,6 +39,7 @@ const useStyles = makeStyles({
     marginTop: '100px',
     width: '100%',
     padding: '10px',
+    margin: '0 10px',
   },
   leftSideWrapper: {
     padding: '70px',
@@ -123,13 +124,18 @@ const Board = ({ onChange, onSubmit, formData }) => {
               onSubmit={onSubmit}
               formData={formData}
             />
-            <Button
-              onClick={() => onSubmit(formData)}
-              variant='contained'
-              className={classes.button}
-            >
-              <b>Atualizar</b>
-            </Button>
+            <div style={{ display: 'flex' }}>
+              <Button variant='contained' className={classes.button}>
+                <b>Editar</b>
+              </Button>
+              <Button
+                onClick={() => onSubmit(formData)}
+                variant='contained'
+                className={classes.button}
+              >
+                <b>Atualizar</b>
+              </Button>
+            </div>
           </Grid>
         </Grid>
       </form>

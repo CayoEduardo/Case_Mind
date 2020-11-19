@@ -80,7 +80,7 @@ const Board = ({ onChange, onSubmit, formData, setFormData }) => {
     <Paper className={classes.card} elevation={3}>
       <form>
         <Grid container>
-          <Grid item className={classes.leftSideWrapper} xs={6} container>
+          <Grid item container className={classes.leftSideWrapper} xs={6}>
             <Grid item xs={10} container>
               <Grid item xs={12}>
                 <Avatar image={image} />

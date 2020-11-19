@@ -29,6 +29,7 @@ const Login = ({ history, carregaUsuario }) => {
           console.log(res)
           carregaUsuario(res.data)
           if (acesso === 1) history.push('/dashboardusuario')
+          else if (acesso === 0) alert('Você não está autorizado a entrar!')
           else if (acesso === 999) history.push('/dashboardadmin')
         } catch (error) {
           console.log(error)

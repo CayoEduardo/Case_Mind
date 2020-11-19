@@ -13,7 +13,7 @@ const Cadastro = ({ history, carregaUsuario }) => {
     cpf: '',
     senha: '',
     acesso: 1,
-    imgPath: '',
+    imgPath: 'a',
   })
 
   const onChange = (e) => {
@@ -35,7 +35,10 @@ const Cadastro = ({ history, carregaUsuario }) => {
           console.log(resUser)
           carregaUsuario(resUser.data)
           if (acesso === 1) history.push('/dashboardusuario')
-          else if (acesso === 999) history.push('/dashboardadmin')
+          else if (acesso === 0) {
+            history.push('/')
+            alert('Você não está autorizado a entrar!')
+          } else if (acesso === 999) history.push('/dashboardadmin')
         } catch (error) {
           console.log(error)
         }

@@ -6,16 +6,14 @@ import { atualizaUsuario, getUsuarios } from '../../services/api'
 import { connect } from 'react-redux'
 import { carregaUsuarios } from '../../redux/'
 
-const DashboardAdmin = ({ usuario, usuarios, carregaUsuarios }) => {
+const DashboardAdmin = ({ usuario, carregaUsuarios }) => {
   useEffect(() => {
     const getU = async () => {
       const res = await getUsuarios(usuario.acesso)
-      console.log(res.data)
       carregaUsuarios(res.data)
     }
     getU()
   }, [])
-  console.log(usuarios)
   const [formData, setFormData] = useState({
     nome: usuario.nome,
     email: usuario.email,

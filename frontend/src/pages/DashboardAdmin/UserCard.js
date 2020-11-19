@@ -2,6 +2,8 @@ import React from 'react'
 
 import { Paper, Grid, makeStyles } from '@material-ui/core'
 import Avatar from './Avatar'
+import { connect } from 'react-redux'
+import { mudaUsuario } from '../../redux'
 
 const useStyles = makeStyles({
   wrapper: {
@@ -21,22 +23,39 @@ const useStyles = makeStyles({
   text: { color: 'rgba(0,0,0,0.7)', fontSize: '16px' },
 })
 
-const UserCard = ({ nome, email, acesso }) => {
+const UserCard = () => {
+  // const UserCard = ({ user, mudaUsuario }) => {
   const classes = useStyles()
+  // const { nome, email, acesso } = user
   return (
-    <Paper className={classes.wrapper} elevation={1}>
+    <Paper
+      // onClick={() => {
+      //   mudaUsuario(user)
+      // }}
+      className={classes.wrapper}
+      elevation={1}
+    >
       <Grid container>
         <Grid item xs={3} className={classes.avatar}>
           <Avatar />
         </Grid>
         <Grid item xs={9} className={classes.infos}>
-          <p className={classes.text}>{nome}</p>
+          {/* <p className={classes.text}>{nome}</p>
           <p className={classes.text}>{email}</p>
-          <p className={classes.text}>Acesso:{acesso}</p>
+          <p className={classes.text}>Acesso:{acesso}</p> */}
+          <p>1</p>
+          <p>2</p>
+          <p>3</p>
         </Grid>
       </Grid>
     </Paper>
   )
 }
 
-export default UserCard
+const mapDispatchToProps = (dispatch) => {
+  return {
+    mudaUsuario: (usuario) => dispatch(mudaUsuario(usuario)),
+  }
+}
+
+export default connect(null, mapDispatchToProps)(UserCard)

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import PropTypes from 'prop-types'
 
 import { Paper, makeStyles } from '@material-ui/core'
@@ -15,12 +15,15 @@ const useStyles = makeStyles({
 })
 
 const UserList = ({ usuarios }) => {
+  useEffect(() => {}, [usuarios])
+
   const classes = useStyles()
   return (
     <Paper className={classes.wrapper}>
-      {usuarios.map((user) => (
-        <UserCard nome={user.nome} email={user.email} acesso={user.acesso} />
-      ))}
+      {/* {usuarios.map((user) => (
+        <UserCard user={user} />
+      ))} */}
+      <UserCard />
     </Paper>
   )
 }

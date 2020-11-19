@@ -1,6 +1,10 @@
 Enviar imagem e acesso pro banco[x]
-Criar logout
-implementar sem acesso
+Criar logout[x]
+deletar usuário[x]
+botão de editar
+validações
+implementar sem acesso [x]
 arrumar css
 limpar
 documentação
+containerizar

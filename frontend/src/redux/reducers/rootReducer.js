@@ -1,9 +1,15 @@
-import { CARREGA_USUARIO, CARREGA_USUARIOS, RESET } from '../types/types'
+import {
+  CARREGA_USUARIO,
+  CARREGA_USUARIOS,
+  RESET,
+  MUDA_USUARIO,
+} from '../types/types'
 
 const initialState = {
   token: localStorage.getItem('token'),
   usuario: null,
   usuarios: [],
+  cardUsuario: null,
 }
 
 export default function (state = initialState, action) {
@@ -23,6 +29,12 @@ export default function (state = initialState, action) {
     case RESET:
       localStorage.removeItem('token')
       return initialState
+
+    case MUDA_USUARIO:
+      return {
+        ...state,
+        cardUsuario: payload,
+      }
     default:
       return state
   }

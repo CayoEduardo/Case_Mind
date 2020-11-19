@@ -1,1 +1,6 @@
-export { carregaUsuario, carregaUsuarios, reset } from './actions/all'
+export {
+  carregaUsuario,
+  carregaUsuarios,
+  reset,
+  mudaUsuario,
+} from './actions/all'

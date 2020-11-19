@@ -3,22 +3,22 @@ import React from 'react'
 import { makeStyles, FormControl, TextField } from '@material-ui/core'
 
 const useStyles = makeStyles({
-  margin: {
+  wrapper: {
     marginBottom: '10px',
   },
   textField: {
-    width: '300px',
+    // width: '70%',
     backgroundColor: 'white',
     borderRadius: '5px',
   },
-  alignLeft: { textAlign: 'left' },
+  alignLeft: { textAlign: 'left', width: '60%' },
 })
 
 const FormField = ({ fieldTitle, fieldName, fieldValue, onChange }) => {
   const classes = useStyles()
 
   return (
-    <FormControl className={classes.margin}>
+    <FormControl className={classes.wrapper}>
       <p className={`${classes.alignLeft} ${classes.margin}`}>{fieldTitle}</p>
       <TextField
         onChange={(e) => onChange(e)}

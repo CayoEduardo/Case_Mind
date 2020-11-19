@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { makeStyles } from '@material-ui/core'
 
 const useStyles = makeStyles({
-  imagem: { width: '100%', height: '100%' },
+  imagem: { width: '300px', height: '300px' },
 })
 
 const Avatar = (props) => {
