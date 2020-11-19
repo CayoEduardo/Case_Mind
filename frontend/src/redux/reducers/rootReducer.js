@@ -21,7 +21,6 @@ export default function (state = initialState, action) {
         usuario: payload,
       }
     case CARREGA_USUARIOS:
-      console.log(payload)
       return {
         ...state,
         usuarios: [...payload],

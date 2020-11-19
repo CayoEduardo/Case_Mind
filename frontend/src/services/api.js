@@ -12,7 +12,6 @@ const apiPath = 'http://localhost:5000'
 export const login = async (formData) => {
   try {
     const res = await axios.post(`${apiPath}/api/login`, formData, config)
-
     return res
   } catch (error) {
     console.log(error.response)

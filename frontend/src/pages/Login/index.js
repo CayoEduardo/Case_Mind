@@ -10,6 +10,7 @@ const Login = ({ history, carregaUsuario }) => {
     email: '',
     senha: '',
   })
+  const [open, setOpen] = useState(false)
 
   const onChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value })
@@ -29,8 +30,9 @@ const Login = ({ history, carregaUsuario }) => {
           console.log(res)
           carregaUsuario(res.data)
           if (acesso === 1) history.push('/dashboardusuario')
-          else if (acesso === 0) alert('Você não está autorizado a entrar!')
-          else if (acesso === 999) history.push('/dashboardadmin')
+          else if (acesso === 0) {
+            setOpen(true)
+          } else if (acesso === 999) history.push('/dashboardadmin')
         } catch (error) {
           console.log(error)
         }
@@ -40,7 +42,15 @@ const Login = ({ history, carregaUsuario }) => {
     }
   }
 
-  return <LoginUI formData={formData} onChange={onChange} onSubmit={onSubmit} />
+  return (
+    <LoginUI
+      open={open}
+      setOpen={setOpen}
+      formData={formData}
+      onChange={onChange}
+      onSubmit={onSubmit}
+    />
+  )
 }
 
 const mapDispatchToProps = (dispatch) => {

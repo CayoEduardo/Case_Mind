@@ -19,9 +19,10 @@ const UserList = ({ usuarios }) => {
   return (
     <Paper className={classes.wrapper}>
       {usuarios.map((user) => (
-        <UserCard user={user} />
+        <>
+          <UserCard user={user} />
+        </>
       ))}
-      <UserCard />
     </Paper>
   )
 }
