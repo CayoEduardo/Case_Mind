@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 
 import { Paper, Grid, makeStyles } from '@material-ui/core'
 import Avatar from './Avatar'
@@ -23,32 +23,33 @@ const useStyles = makeStyles({
   text: { color: 'rgba(0,0,0,0.7)', fontSize: '16px' },
 })
 
-const UserCard = () => {
-  // const UserCard = ({ user, mudaUsuario }) => {
+const UserCard = ({ user, mudaUsuario }) => {
   const classes = useStyles()
-  // const { nome, email, acesso } = user
+
   return (
-    <Paper
-      // onClick={() => {
-      //   mudaUsuario(user)
-      // }}
-      className={classes.wrapper}
-      elevation={1}
-    >
-      <Grid container>
-        <Grid item xs={3} className={classes.avatar}>
-          <Avatar />
+    <>
+      <Paper
+        onClick={() => {
+          mudaUsuario(user)
+        }}
+        className={classes.wrapper}
+        elevation={1}
+      >
+        <Grid container>
+          <Grid item xs={3} className={classes.avatar}>
+            <Avatar />
+          </Grid>
+          <Grid item xs={9} className={classes.infos}>
+            {/* <p className={classes.text}>{user.nome}</p>
+            <p className={classes.text}>{user.email}</p>
+            <p className={classes.text}>Acesso:{user.acesso}</p> */}
+            <p>1</p>
+            <p>2</p>
+            <p>3</p>
+          </Grid>
         </Grid>
-        <Grid item xs={9} className={classes.infos}>
-          {/* <p className={classes.text}>{nome}</p>
-          <p className={classes.text}>{email}</p>
-          <p className={classes.text}>Acesso:{acesso}</p> */}
-          <p>1</p>
-          <p>2</p>
-          <p>3</p>
-        </Grid>
-      </Grid>
-    </Paper>
+      </Paper>
+    </>
   )
 }
 

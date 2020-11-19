@@ -15,14 +15,12 @@ const useStyles = makeStyles({
 })
 
 const UserList = ({ usuarios }) => {
-  useEffect(() => {}, [usuarios])
-
   const classes = useStyles()
   return (
     <Paper className={classes.wrapper}>
-      {/* {usuarios.map((user) => (
+      {usuarios.map((user) => (
         <UserCard user={user} />
-      ))} */}
+      ))}
       <UserCard />
     </Paper>
   )

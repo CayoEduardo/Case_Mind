@@ -25,7 +25,7 @@ const DashboardUsuarioUI = ({ onChange, onSubmit, formData, reset }) => {
   return (
     <Grid container className={classes.container}>
       <Grid item xs={12}>
-        <Navbar titulo='Dashboard - Usuário' />
+        <Navbar titulo='Dashboard - Usuário' logged={true} />
       </Grid>
       <Grid item xs={8}>
         <Board onChange={onChange} onSubmit={onSubmit} formData={formData} />

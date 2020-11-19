@@ -62,19 +62,13 @@ const useStyles = makeStyles({
 
 const Board = ({ onChange, onSubmit, formData, setFormData }) => {
   const classes = useStyles()
-  const [image, setImage] = useState(
-    'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg'
-  )
+  const [image, setImage] = useState(formData.imgPath)
 
   const imageHandler = (event) => {
     let file = event.target.files[0]
     URL.createObjectURL(file)
     setImage(URL.createObjectURL(file))
   }
-
-  useEffect(() => {
-    console.log(image)
-  }, [image])
 
   return (
     <Paper className={classes.card} elevation={3}>
@@ -86,11 +80,6 @@ const Board = ({ onChange, onSubmit, formData, setFormData }) => {
                 <Avatar image={image} />
               </Grid>
               <Grid item xs={12}>
-                {/* <Button className={classes.imagemButton} variant='contained'>
-                  <b>
-                    <p>Selecionar avatar</p>
-                  </b>
-                </Button> */}
                 <input
                   type='file'
                   accept='image/*'

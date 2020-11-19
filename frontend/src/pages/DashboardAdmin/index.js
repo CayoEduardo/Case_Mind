@@ -7,18 +7,21 @@ import { connect } from 'react-redux'
 import { carregaUsuarios } from '../../redux/'
 
 const DashboardAdmin = ({ usuario, carregaUsuarios }) => {
-  useEffect(() => {
+  useEffect(async () => {
     const getU = async () => {
       const res = await getUsuarios(usuario.acesso)
       carregaUsuarios(res.data)
     }
-    getU()
-  }, [])
+    await getU()
+  })
   const [formData, setFormData] = useState({
     nome: usuario.nome,
     email: usuario.email,
     cpf: usuario.cpf,
     senha: usuario.senha,
+    imgPath:
+      'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg',
+    acesso: 999,
   })
 
   const onChange = (e) => {
@@ -35,6 +38,7 @@ const DashboardAdmin = ({ usuario, carregaUsuarios }) => {
     <DashboardAdminUI
       onChange={onChange}
       onSubmit={onSubmit}
+      setFormData={setFormData}
       formData={formData}
     />
   )

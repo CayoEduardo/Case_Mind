@@ -12,6 +12,8 @@ import {
   Radio,
   TextField,
 } from '@material-ui/core'
+import UserImg from './UserImg'
+import Acesso from './Acesso'
 
 const useStyles = makeStyles({
   card: {
@@ -60,60 +62,37 @@ const useStyles = makeStyles({
   acesso: { color: 'white' },
 })
 
-const Board = ({ onChange, onSubmit, formData }) => {
+const Board = ({ onChange, onSubmit, formData, setFormData }) => {
   const classes = useStyles()
+  const [image, setImage] = useState(formData.imgPath)
+
+  const imageHandler = (event) => {
+    let file = event.target.files[0]
+    URL.createObjectURL(file)
+    setImage(URL.createObjectURL(file))
+  }
 
   return (
     <Paper className={classes.card} elevation={3}>
       <form>
         <Grid container>
-          <Grid
-            item
-            className={classes.leftSideWrapper}
-            xs={6}
-            style={{ marginTop: '42px' }}
-            container
-          >
+          <Grid item className={classes.leftSideWrapper} xs={6} container>
             <Grid item xs={10} container>
               <Grid item xs={12}>
-                <img
-                  className={classes.imagem}
-                  src='https://s2.glbimg.com/WpmBvZZRHmk1Y3hPwq4KHVNuXbA=/e.glbimg.com/og/ed/f/original/2018/12/18/winner_nian-wang.jpg'
-                  alt=''
+                <UserImg image={image} />
+              </Grid>
+              <Grid item xs={12}>
+                <input
+                  type='file'
+                  accept='image/*'
+                  onChange={(e) => {
+                    imageHandler(e)
+                    setFormData({ ...formData, imgPath: image })
+                  }}
                 />
               </Grid>
               <Grid item xs={12}>
-                <Button className={classes.imagemButton} variant='contained'>
-                  <b>
-                    <p>Imagem</p>
-                  </b>
-                </Button>
-              </Grid>
-              <Grid item xs={12}>
-                <FormControl className={classes.acesso} component='fieldset'>
-                  <h2 className={classes.acesso}>Acesso</h2>
-                  <RadioGroup
-                    className={classes.acesso}
-                    aria-label='Acesso'
-                    name='Acesso'
-                  >
-                    <FormControlLabel
-                      value='Admin'
-                      control={<Radio className={classes.acesso} />}
-                      label='Admin'
-                    />
-                    <FormControlLabel
-                      value='Usuario'
-                      control={<Radio className={classes.acesso} />}
-                      label='Usuario'
-                    />
-                    <FormControlLabel
-                      value='Sem acesso'
-                      control={<Radio className={classes.acesso} />}
-                      label='Sem acesso'
-                    />
-                  </RadioGroup>
-                </FormControl>
+                <Acesso onChange={onChange} formData={formData} />
               </Grid>
             </Grid>
           </Grid>

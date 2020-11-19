@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import background from '../../assets/Fundo.png'
 import Board from './Board'
 import { Grid, makeStyles } from '@material-ui/core'
+import Navbar from '../../components/Navbar'
 
 const useStyles = makeStyles({
   container: {
@@ -16,16 +17,18 @@ const useStyles = makeStyles({
   centered: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
+    maxHeight: '700px',
   },
 })
 const CadastroUI = ({ onChange, onSubmit, formData, setFormData }) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
-      {/* <Grid item xs={12} style={{ padding: '5px' }}>
-        <h1 className={classes.tittle}>Cadastro</h1>
-      </Grid> */}
+      <Grid item xs={12}>
+        <Navbar titulo='Cadastro' logged={false} />
+      </Grid>
+
       <Grid item xs={8} className={classes.centered}>
         <Board
           setFormData={setFormData}

@@ -13,7 +13,8 @@ const Cadastro = ({ history, carregaUsuario }) => {
     cpf: '',
     senha: '',
     acesso: 1,
-    imgPath: 'a',
+    imgPath:
+      'https://www.svgrepo.com/show/122119/user-image-with-black-background.svg',
   })
 
   const onChange = (e) => {

@@ -1,6 +1,6 @@
 import React from 'react'
 import background from '../../assets/Fundo.png'
-import Navbar from './Navbar'
+import Navbar from '../../components/Navbar'
 
 import { Grid, makeStyles } from '@material-ui/core'
 
@@ -16,23 +16,29 @@ const useStyles = makeStyles({
   centered: {
     display: 'flex',
     justifyContent: 'center',
-    alignItems: 'center',
+    // alignItems: 'center',
+    height: '700px',
   },
 })
 
-const DashboardAdminUI = ({ onChange, onSubmit, formData }) => {
+const DashboardAdminUI = ({ onChange, onSubmit, formData, setFormData }) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
       <Grid item xs={12}>
-        <Navbar titulo='Dashboard - Admin' />
+        <Navbar titulo='Dashboard - Admin' logged={true} />
       </Grid>
       <Grid item container xs={12}>
         <Grid item xs={3} className={classes.centered}>
           <UserList />
         </Grid>
         <Grid item xs={8} className={classes.centered}>
-          <Board onChange={onChange} onSubmit={onSubmit} formData={formData} />
+          <Board
+            setFormData={setFormData}
+            onChange={onChange}
+            onSubmit={onSubmit}
+            formData={formData}
+          />
         </Grid>
       </Grid>
     </Grid>
