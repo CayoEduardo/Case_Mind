@@ -123,6 +123,13 @@ const Board = ({ onChange, onSubmit, formData }) => {
               onSubmit={onSubmit}
               formData={formData}
             />
+            <Button
+              onClick={() => onSubmit(formData)}
+              variant='contained'
+              className={classes.button}
+            >
+              <b>Atualizar</b>
+            </Button>
           </Grid>
         </Grid>
       </form>

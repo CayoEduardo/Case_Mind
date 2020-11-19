@@ -6,6 +6,7 @@ import FormUI from './FormUI'
 const FormContainer = ({ onChange, onSubmit, formData }) => {
   const showFormFields = (formData) => {
     let campos = Object.getOwnPropertyNames(formData)
+    campos.splice(campos.indexOf('acesso'), 1)
 
     return campos.map((campo) => (
       <FormField

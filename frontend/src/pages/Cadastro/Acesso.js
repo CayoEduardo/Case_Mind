@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 import {
   FormControl,
@@ -10,26 +10,45 @@ import {
 
 const useStyles = makeStyles({ acesso: { color: 'white' } })
 
-const Acesso = (props) => {
+const Acesso = ({ onChange, formData }) => {
   const classes = useStyles()
+  const [val, setVal] = useState(formData.acesso)
   return (
     <FormControl className={classes.acesso} component='fieldset'>
       <h2 className={classes.acesso}>Acesso</h2>
-      <RadioGroup className={classes.acesso} aria-label='Acesso' name='Acesso'>
+      <RadioGroup
+        className={classes.acesso}
+        value={val}
+        aria-label='Acesso'
+        name='acesso'
+      >
         <FormControlLabel
-          value='Admin'
+          onChange={(event) => {
+            onChange(event)
+            setVal(999)
+            // console.log(formData)
+          }}
+          value={999}
           control={<Radio className={classes.acesso} />}
           label='Admin'
         />
         <FormControlLabel
-          value='Usuario'
+          value={1}
           control={<Radio className={classes.acesso} />}
           label='Usuario'
+          onChange={(event) => {
+            setVal(1)
+            onChange(event)
+          }}
         />
         <FormControlLabel
-          value='Sem acesso'
+          value={0}
           control={<Radio className={classes.acesso} />}
           label='Sem acesso'
+          onChange={(event) => {
+            setVal(0)
+            onChange(event)
+          }}
         />
       </RadioGroup>
     </FormControl>

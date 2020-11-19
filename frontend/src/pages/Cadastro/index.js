@@ -12,7 +12,7 @@ const Cadastro = ({ history, carregaUsuario }) => {
     email: '',
     cpf: '',
     senha: '',
-    acesso: 999,
+    acesso: -1,
   })
 
   const onChange = (e) => {

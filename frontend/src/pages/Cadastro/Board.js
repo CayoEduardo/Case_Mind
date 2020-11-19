@@ -90,7 +90,7 @@ const Board = ({ onChange, onSubmit, formData }) => {
                 </Button>
               </Grid>
               <Grid item xs={12}>
-                <Acesso />
+                <Acesso onChange={onChange} formData={formData} />
               </Grid>
             </Grid>
           </Grid>
