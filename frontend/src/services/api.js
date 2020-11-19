@@ -7,33 +7,44 @@ const config = {
   },
 }
 
+const apiPath = 'http://localhost:5000'
+
 export const login = async (formData) => {
   try {
-    const res = await axios.post(
-      'http://localhost:5000/api/login',
-      formData,
-      config
-    )
-    console.log(res.data.token)
+    const res = await axios.post(`${apiPath}/api/login`, formData, config)
 
-    return res.data.token
+    return res
   } catch (error) {
     console.log(error.response)
-    return error.response.data.errors[0].msg
+    return error
+  }
+}
+
+export const getUsuario = async (id) => {
+  try {
+    const res = await axios.get(`${apiPath}/api/usuario`, { id }, config)
+    console.log(res)
+    return res
+  } catch (error) {
+    return error
+  }
+}
+
+export const atualizaUsuario = async (formData) => {
+  try {
+    const res = await axios.put(`${apiPath}/api/usuario`, formData, config)
+    console.log(res)
+  } catch (error) {
+    console.log(error)
   }
 }
 
 export const cadastra = async (formData) => {
   formData.acesso = 1
   try {
-    const res = await axios.post(
-      'http://localhost:5000/api/usuario',
-      formData,
-      config
-    )
+    const res = await axios.post(`${apiPath}/api/usuario`, formData, config)
     console.log(res.data)
-    console.log(res.data.token)
-    return res.data.token
+    return res
   } catch (error) {
     console.log(error)
     console.log(error.response)

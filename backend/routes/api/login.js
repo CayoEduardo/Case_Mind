@@ -51,13 +51,15 @@ router.post(
         },
       }
 
+      const { id, acesso } = payload.user
+
       jwt.sign(
         payload,
         config.get('jwtToken'),
         { expiresIn: 360000 },
         (error, token) => {
           if (error) throw error
-          res.json({ token })
+          res.json({ token, id, acesso })
         }
       )
     } catch (error) {

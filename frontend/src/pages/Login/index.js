@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
-import PropTypes from 'prop-types'
 import LoginUI from './LoginUI'
-import { login } from '../../services/api'
+import { login, getUsuario } from '../../services/api'
+import axios from 'axios'
+import { carregaUsuario } from '../../redux/'
+import { connect } from 'react-redux'
 
-const Login = (props) => {
+const Login = ({ history, carregaUsuario }) => {
   const [formData, setFormData] = useState({
     email: '',
     senha: '',
@@ -14,13 +16,36 @@ const Login = (props) => {
   }
 
   const onSubmit = async (formData) => {
-    const isLogged = await login(formData)
-    alert(isLogged)
+    try {
+      const isLogged = await login(formData)
+      if (isLogged.status === 200) {
+        const token = isLogged.data.token
+        const id = isLogged.data.id
+        localStorage.setItem('token', token)
+        axios.defaults.headers.common['x-auth-token'] = token
+        try {
+          const res = await getUsuario(id)
+          console.log(res)
+          carregaUsuario(res.data)
+          history.push('/dashboardusuario')
+        } catch (error) {
+          console.log(error)
+        }
+      }
+    } catch (error) {
+      console.log(error)
+    }
   }
 
   return <LoginUI formData={formData} onChange={onChange} onSubmit={onSubmit} />
 }
 
+const mapDispatchToProps = (dispatch) => {
+  return {
+    carregaUsuario: (usuario) => dispatch(carregaUsuario(usuario)),
+  }
+}
+
 Login.propTypes = {}
 
-export default Login
+export default connect(null, mapDispatchToProps)(Login)

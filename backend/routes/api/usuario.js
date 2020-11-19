@@ -17,11 +17,10 @@ const User = require('../../models/User')
 // @access Private
 router.get('/', [auth], async (req, res) => {
   let user = await User.findOne({ _id: req.user.id })
-    .select('-senha')
     .select('-acesso')
     .select('-__v')
-  res.contentType(user.avatar.contentType)
-  res.send(user.avatar.data)
+  // res.contentType(user.avatar.contentType)
+  // res.send(user.avatar.data)
 
   if (!user) {
     res.status(500).json({ errors: [{ msg: 'Credenciais Inválidas' }] })

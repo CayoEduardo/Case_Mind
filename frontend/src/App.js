@@ -5,13 +5,18 @@ import { CssBaseline } from '@material-ui/core'
 import { BrowserRouter } from 'react-router-dom'
 import RouterConfig from './navigation/RouterConfig'
 
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
 const App = () => {
   return (
-    <div className='App'>
-      <BrowserRouter>
-        <RouterConfig />
-      </BrowserRouter>
-    </div>
+    <Provider store={store}>
+      <div className='App'>
+        <BrowserRouter>
+          <RouterConfig />
+        </BrowserRouter>
+      </div>
+    </Provider>
   )
 }
 

@@ -80,9 +80,6 @@ const Board = ({ onChange, onSubmit, formData }) => {
                   </b>
                 </Button>
               </Grid>
-              <Grid item xs={12}>
-                <Acesso />
-              </Grid>
             </Grid>
           </Grid>
 
@@ -92,13 +89,12 @@ const Board = ({ onChange, onSubmit, formData }) => {
               onChange={onChange}
               onSubmit={onSubmit}
             />
-            <p>Já possui cadastro?</p>
             <Button
               onClick={() => onSubmit(formData)}
               variant='contained'
               className={classes.button}
             >
-              Cadastrar
+              <b>Atualizar</b>
             </Button>
           </Grid>
         </Grid>

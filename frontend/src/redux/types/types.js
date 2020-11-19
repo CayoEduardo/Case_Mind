@@ -1,0 +1,1 @@
+export const CARREGA_USUARIO = 'CARREGA_USUARIO'

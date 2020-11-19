@@ -8,12 +8,14 @@ const FormContainer = ({ onChange, onSubmit, formData }) => {
     let campos = Object.getOwnPropertyNames(formData)
 
     return campos.map((campo) => (
-      <FormField
-        fieldTitle={campo.charAt(0).toUpperCase() + campo.slice(1)}
-        fieldName={campo}
-        fieldValue={formData.campo}
-        onChange={onChange}
-      />
+      <>
+        <FormField
+          fieldTitle={campo.charAt(0).toUpperCase() + campo.slice(1)}
+          fieldName={campo}
+          fieldValue={formData[campo]}
+          onChange={onChange}
+        />
+      </>
     ))
   }
   return (

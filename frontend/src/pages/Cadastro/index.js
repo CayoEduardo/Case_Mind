@@ -18,7 +18,7 @@ const Cadastro = (props) => {
   const onSubmit = async (formData) => {
     console.log(formData)
     const res = await cadastra(formData)
-    alert(res)
+    console.log(res)
   }
   return (
     <CadastroUI onChange={onChange} onSubmit={onSubmit} formData={formData} />
