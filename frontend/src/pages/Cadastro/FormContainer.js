@@ -11,7 +11,7 @@ const FormContainer = ({ onChange, onSubmit, formData }) => {
       <FormField
         fieldTitle={campo.charAt(0).toUpperCase() + campo.slice(1)}
         fieldName={campo}
-        fieldValue={formData.campo}
+        fieldValue={formData[campo]}
         onChange={onChange}
       />
     ))

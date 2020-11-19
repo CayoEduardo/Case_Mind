@@ -17,7 +17,7 @@ const User = require('../../models/User')
 // @access Private
 router.get('/', [auth], async (req, res) => {
   let user = await User.findOne({ _id: req.user.id })
-    .select('-acesso')
+    // .select('-acesso')
     .select('-__v')
   // res.contentType(user.avatar.contentType)
   // res.send(user.avatar.data)
@@ -52,8 +52,8 @@ router.post(
       return res.status(400).json({ errors: errors.array() })
     }
 
-    const { nome, email, senha, cpf, acesso, imgPath } = req.body
-
+    const { nome, email, senha } = req.body
+    console.log(req.body)
     try {
       let user = await User.findOne({ email })
 
@@ -63,10 +63,10 @@ router.post(
 
       user = new User({
         nome,
-        email,
-        senha,
-        cpf,
-        acesso,
+        email: req.body.email,
+        cpf: req.body.cpf,
+        senha: req.body.senha,
+        acesso: req.body.acesso,
       })
 
       const salt = await bcrypt.genSalt(10)
@@ -83,13 +83,15 @@ router.post(
         },
       }
 
+      const { id, acesso } = payload.user
+
       jwt.sign(
         payload,
         config.get('jwtToken'),
         { expiresIn: 360000 },
         (error, token) => {
           if (error) throw error
-          res.json({ token })
+          res.json({ token, id, acesso })
         }
       )
     } catch (error) {

@@ -16,6 +16,8 @@ const useStyles = makeStyles({
 
 const FormField = ({ fieldTitle, fieldName, fieldValue, onChange }) => {
   const classes = useStyles()
+  console.log(fieldTitle)
+  console.log(fieldName)
   console.log(fieldValue)
   return (
     <FormControl className={classes.margin}>
