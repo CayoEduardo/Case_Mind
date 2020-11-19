@@ -1,8 +1,9 @@
-import { CARREGA_USUARIO } from '../types/types'
+import { CARREGA_USUARIO, CARREGA_USUARIOS } from '../types/types'
 
 const initialState = {
   token: localStorage.getItem('token'),
   usuario: null,
+  usuarios: [],
 }
 
 export default function (state = initialState, action) {
@@ -12,6 +13,12 @@ export default function (state = initialState, action) {
       return {
         ...state,
         usuario: payload,
+      }
+    case CARREGA_USUARIOS:
+      console.log(payload)
+      return {
+        ...state,
+        usuarios: [...payload],
       }
     default:
       return state

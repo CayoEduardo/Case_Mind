@@ -1,1 +1,1 @@
-export { carregaUsuario } from './actions/all'
+export { carregaUsuario, carregaUsuarios } from './actions/all'

@@ -11,7 +11,7 @@ const User = require('../../models/User')
 // @access Private
 // @todo   Verificar Privilégio
 router.get('/', auth, async (req, res) => {
-  if (req.user.acesso !== 1) {
+  if (req.user.acesso !== 999) {
     return res.status(401).json({
       msg: 'Acesso negado. Você não tem o acesso necessário para essa ação.',
     })

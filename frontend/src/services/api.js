@@ -20,6 +20,15 @@ export const login = async (formData) => {
   }
 }
 
+export const getUsuarios = async (acesso) => {
+  try {
+    const res = await axios.get(`${apiPath}/api/usuarios`, { acesso }, config)
+    return res
+  } catch (error) {
+    return error.response
+  }
+}
+
 export const getUsuario = async (id) => {
   try {
     const res = await axios.get(`${apiPath}/api/usuario`, { id }, config)

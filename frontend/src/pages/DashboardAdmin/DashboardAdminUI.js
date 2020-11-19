@@ -29,13 +29,13 @@ const useStyles = makeStyles({
   },
 })
 
-const DashboardAdminUI = ({ onChange, onSubmit, formData }) => {
+const DashboardAdminUI = ({ onChange, onSubmit, formData, usuarios }) => {
   const classes = useStyles()
   return (
     <Grid container className={classes.container}>
       <Grid item container xs={12}>
         <Grid item xs={3} className={classes.centered}>
-          <UserList />
+          <UserList usuarios={usuarios} />
         </Grid>
         <Grid item xs={8} className={classes.centered}>
           <Board onChange={onChange} onSubmit={onSubmit} formData={formData} />

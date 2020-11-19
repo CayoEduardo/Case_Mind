@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 
 import { Paper, makeStyles } from '@material-ui/core'
 import UserCard from './UserCard'
+import { connect } from 'react-redux'
 
 const useStyles = makeStyles({
   wrapper: {
@@ -13,34 +14,23 @@ const useStyles = makeStyles({
   },
 })
 
-const UserList = (props) => {
-  const users = [
-    {
-      Nome: 'Cayo Eduardo',
-      Acesso: 1,
-      Email: 'silveira.cayo@email.com',
-    },
-    {
-      Nome: 'Natália',
-      Acesso: 1,
-      Email: 'email@email.com',
-    },
-    {
-      Nome: 'C',
-      Acesso: 1,
-      Email: 'C@email.com',
-    },
-  ]
+const UserList = ({ usuarios }) => {
   const classes = useStyles()
   return (
     <Paper className={classes.wrapper}>
-      {users.map((user) => (
-        <UserCard nome={user.Nome} email={user.Email} acesso={user.Acesso} />
+      {usuarios.map((user) => (
+        <UserCard nome={user.nome} email={user.email} acesso={user.acesso} />
       ))}
     </Paper>
   )
 }
 
+const mapStateToProps = (state) => {
+  return {
+    usuarios: state.usuarios,
+  }
+}
+
 UserList.propTypes = {}
 
-export default UserList
+export default connect(mapStateToProps)(UserList)
